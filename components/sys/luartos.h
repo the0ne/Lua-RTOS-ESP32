@@ -173,6 +173,13 @@
 #endif
 #endif
 
+// SPIRAM
+#if CONFIG_SPIRAM_SUPPORT
+#if CONFIG_SPIRAM_CACHE_WORKAROUND
+#error "Having SPIRAM_CACHE_WORKAROUND enabled leads to open(filename, O_RDONLY) wrongly returning -1 - and possibly further yet-unknown bugs. Please deactivate it with make menuconfig, disabling option in Component config -> ESP32-specific -> Support for external, SPI-connected RAM -> Enable workaround for bug in SPI RAM cache for Rev1 ESP32s."
+#endif
+#endif
+
 // Root file system
 #if CONFIG_LUA_RTOS_RAM_FS_ROOT_FS
 #define CONFIG_LUA_RTOS_ROOT_FS "ramfs"
